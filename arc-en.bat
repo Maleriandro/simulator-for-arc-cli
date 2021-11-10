@@ -37,12 +37,12 @@
 ::Muestra ayuda del programa
 if "%1" == "" if "%2" == "" if "%3" == "" (
 echo usage: arc [-version] ^| ^<file^> [-c] [-bin] [-lst]
-echo    -c  : Para solo compilar, sin correr el simulador.
-echo          Por defecto compila archivo .bin y .lst; pero puede usar un
-echo          parametro extra para indicar que se conserve solo 1 de los archivos.
+echo    -c  : For compile only, witout running the simulator.
+echo          By default it compiles the .bin and .lst files; but you can use
+echo          an extra parameter to conserve only one of the files.
 
-echo    -bin: Para que no se elimine el archivo .bin luego de terminar el programa.
-echo    -lst: Para que no se elimine el archivo .lst luego de terminar el programa.
+echo    -bin: Don't delete the .bin file after closing the simulator.
+echo    -lst: Don't delete the .lst file after closing the simulator.
 exit
 )
 
@@ -57,7 +57,7 @@ exit
 
 :: Determina si existe el archivo antes de ejecutar algo más
 if not exist %1 (
-echo No existe el archivo ingresado
+echo Can't find file selected.
 exit
 )
 
@@ -68,7 +68,7 @@ if not "%2" == "" if not "%2" == "-lst" if not "%2" == "-bin" if not "%2" == "-c
 if not "%3" == "" if not "%3" == "-lst" if not "%3" == "-bin" set error_parametros=true
 
 if %error_parametros% == true (
-echo Hubo algun error en los parametros enviados. Ejecute "arc" para ver los comandos disponibles.
+echo There is an incorrect parameter. Execute "arc" to see avaible commands.
 exit
 )
 
